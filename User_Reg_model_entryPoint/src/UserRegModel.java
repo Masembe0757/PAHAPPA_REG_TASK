@@ -6,8 +6,8 @@ class User{
     String username;
     String firstname;
     String lastname;
-    String dob;
-    User(String username, String firstname , String lastname, String dob){
+    Date dob;
+    User(String username, String firstname , String lastname, Date dob){
         this.username = username;
         this.firstname =firstname;
         this.lastname = lastname;
@@ -18,7 +18,7 @@ class User{
 public class UserRegModel {
     static final List<User> usrnam = new ArrayList<>();
     
-    public static void AddUser(String username, String firstname , String lastname, String dob){
+    public static void AddUser(String username, String firstname , String lastname, Date dob){
         User newUser = new User(username,firstname,lastname,dob);
         usrnam.add(newUser);
     }
