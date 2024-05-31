@@ -85,10 +85,21 @@ public class UserRegModel {
         return "String : " + Optional.ofNullable(this.userName).orElse("Unknown") ;
 
         }
-    
-    public static void main(String[] args) {
-        
-        
+    @Override
+    public final int hashCode() {
+        int result = 17;
+        if (userName != null) {
+            result = 31 * result + userName.hashCode();
+        }
+        if (lastName != null) {
+            result = 31 * result + lastName.hashCode();
+        }
+        if (firstName != null) {
+            result = 31 * result + firstName.hashCode();
+        }
+        if (dateOfBirth != null) {
+            result = 31 * result + dateOfBirth.hashCode();
+        }
+        return result;
     }
-
 }
