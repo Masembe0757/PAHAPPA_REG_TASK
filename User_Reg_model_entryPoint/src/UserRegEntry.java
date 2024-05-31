@@ -1,3 +1,4 @@
+import models.UserRegModel;
 public class UserRegEntry{
     public static void main(String[] args) {
 
