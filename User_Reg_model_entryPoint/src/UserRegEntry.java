@@ -1,5 +1,7 @@
 public class UserRegEntry{
     public static void main(String[] args) {
+
+        // menu printout
         System.out.println("Welcome to the user registration system");
         System.out.println("The following is the allowed functionality");
         System.out.println("Registering new user");
