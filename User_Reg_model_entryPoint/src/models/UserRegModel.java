@@ -3,38 +3,40 @@ import java.lang.reflect.Array;
 import java.util.*;
 
 //This class provides a constructor that provides attributes expected of a user 
-class User{
-    String username;
-    String firstname;
-    String lastname;
-    Date dob;
+
+public class UserRegModel {
+
+    private String userName;
+    private String firstName;
+    private String lastName;
+    private Date dateOfBirth;
 
 //user constructor
-    User(String username, String firstname , String lastname, Date dob){
-        this.username = username;
-        this.firstname =firstname;
-        this.lastname = lastname;
-        this.dob= dob;
+    UserRegModel(String username, String firstname , String lastname, Date dob){
+        this.userName = username;
+        this.firstName =firstname;
+        this.lastName = lastname;
+        this.dateOfBirth = dob;
     }
 
     //This method sets users user name
     public void setUsername(String username){
-        this.username = username;
+        this.userName = username;
 
     }
     //This method sets users first name
     public void setFirstName(String firstname){
-        this.firstname = firstname;
+        this.firstName = firstname;
 
     }
     //This method sets users last  name
     public void setLastName(String lastname){
-        this.lastname = lastname;
+        this.lastName = lastname;
 
     }
     //This method sets users date of birth
     public void setDob(Date dob){
-        this.dob = dob;
+        this.dateOfBirth = dob;
 
     }
 
@@ -42,27 +44,47 @@ class User{
 
     //This method Gets the user name
     public String getUsername(){
-        return username;
+        return userName;
     }
 
     //This method gets users first name
     public String getFirstName(){
-        return firstname;
+        return firstName;
     } 
 
     //This method gets users Last name
     public String getLastName(){
-        return lastname;
+        return lastName;
     } 
     //This method sets users date of birth
-    public Date getDob(){
-        return dob;
+    public Date getdateOfBirth(){
+        return dateOfBirth;
     }
-}
 
-public class UserRegModel {
+    // Overriding equals method to compare objects
+    @Override
+    public boolean equals(Object o){
+        if (o == this)
+        return true;
+        if (!(o instanceof UserRegModel))
+            return false;
+        UserRegModel other = (UserRegModel)o;
 
-   
+        boolean UserNameEquals = (this.userName == null && other.userName == null)
+        || (this.userName != null && this.userName.equals(other.userName));
+        boolean FirstNameEquals = (this.firstName == null && other.firstName == null)
+        || (this.firstName != null && this.firstName.equals(other.firstName));
+        boolean LastNameEquals = (this.lastName == null && other.lastName == null)
+        || (this.lastName != null && this.lastName.equals(other.lastName));
+        return this.dateOfBirth == other.dateOfBirth && UserNameEquals && LastNameEquals && FirstNameEquals;
+    }
+    //Null safety mitigation using ToString method overriding and same can be done for each atttribute
+
+    @Override
+    public String toString() {
+        return "String : " + Optional.ofNullable(this.userName).orElse("Unknown") ;
+
+        }
     
     public static void main(String[] args) {
         
