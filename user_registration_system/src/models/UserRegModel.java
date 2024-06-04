@@ -61,45 +61,53 @@ public class UserRegModel {
         return dateOfBirth;
     }
 
-    // Overriding equals method to compare objects
     @Override
-    public boolean equals(Object o){
-        if (o == this)
-        return true;
-        if (!(o instanceof UserRegModel))
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
             return false;
-        UserRegModel other = (UserRegModel)o;
-
-        boolean UserNameEquals = (this.userName == null && other.userName == null)
-        || (this.userName != null && this.userName.equals(other.userName));
-        boolean FirstNameEquals = (this.firstName == null && other.firstName == null)
-        || (this.firstName != null && this.firstName.equals(other.firstName));
-        boolean LastNameEquals = (this.lastName == null && other.lastName == null)
-        || (this.lastName != null && this.lastName.equals(other.lastName));
-        return this.dateOfBirth == other.dateOfBirth && UserNameEquals && LastNameEquals && FirstNameEquals;
+        if (getClass() != obj.getClass())
+            return false;
+        UserRegModel other = (UserRegModel) obj;
+        if (userName == null) {
+            if (other.userName != null)
+                return false;
+        } else if (!userName.equals(other.userName))
+            return false;
+        if (firstName == null) {
+            if (other.firstName != null)
+                return false;
+        } else if (!firstName.equals(other.firstName))
+            return false;
+        if (lastName == null) {
+            if (other.lastName != null)
+                return false;
+        } else if (!lastName.equals(other.lastName))
+            return false;
+        if (dateOfBirth == null) {
+            if (other.dateOfBirth != null)
+                return false;
+        } else if (!dateOfBirth.equals(other.dateOfBirth))
+            return false;
+        return true;
     }
-    //Null safety mitigation using ToString method overriding and same can be done for each atttribute
 
     @Override
     public String toString() {
-        return "String : " + Optional.ofNullable(this.userName).orElse("Unknown") ;
-
-        }
+        return "UserRegModel [userName=" + userName + ", firstName=" + firstName + ", lastName=" + lastName
+                + ", dateOfBirth=" + dateOfBirth + "]";
+    }
     @Override
-    public final int hashCode() {
-        int result = 17;
-        if (userName != null) {
-            result = 31 * result + userName.hashCode();
-        }
-        if (lastName != null) {
-            result = 31 * result + lastName.hashCode();
-        }
-        if (firstName != null) {
-            result = 31 * result + firstName.hashCode();
-        }
-        if (dateOfBirth != null) {
-            result = 31 * result + dateOfBirth.hashCode();
-        }
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((userName == null) ? 0 : userName.hashCode());
+        result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
+        result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
+        result = prime * result + ((dateOfBirth == null) ? 0 : dateOfBirth.hashCode());
         return result;
     }
+
+    
 }
