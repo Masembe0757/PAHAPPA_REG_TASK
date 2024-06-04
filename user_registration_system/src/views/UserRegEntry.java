@@ -1,4 +1,5 @@
-import models.UserRegModel;
+package views;
+
 public class UserRegEntry{
     public static void main(String[] args) {
 
